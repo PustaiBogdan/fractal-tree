@@ -1,0 +1,71 @@
+footer{
+    display: flex;
+    flex:1 1 1;
+    background-color: teal;
+    height: 20vh;
+    justify-content: center;
+   
+}
+.about{
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    color: white;
+    width: 30%;
+    border: 2px solid black;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+}
+.about p:first-child{
+    font-size: larger;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.about p a{
+    text-decoration: underline;
+    color: white;
+    font-size: larger;
+}
+.about p:last-child{
+    padding: 10px;
+    text-align: center;
+}
+.my-name{
+
+    width: 30%;
+    border: 2px solid black;
+    border-top: none;
+    border-bottom: none;
+    color: white;
+    font-size: x-large;
+ 
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+.my-name p{
+    display: inline-block;
+    margin-bottom: 10px;
+   
+}
+.contact{ 
+    width: 30%;
+    display: flex;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+}
+.contact a{
+    text-decoration: underline;
+    font-size: 20px;
+    color: white;
+
+
+
+}

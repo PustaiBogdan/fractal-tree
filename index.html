@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styleForm.css">
+	<link rel="stylesheet" href="styleCheck.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+	<link rel="stylesheet" href="stylePicker.css">
+	<link rel="stylesheet" href="style-begining.css">
+	<link rel="stylesheet" href="style-footer.css">
+
+</head>
+<body>
+	<div class="first-container">
+		<div class="author">
+				<div class="author-photo">
+
+				</div>
+				<div class="author-name">
+					<i><p>Benoit Mandelbrot</p></i>
+				</div>
+		</div>
+		<div class="quote">“Clouds are not spheres, mountains are not cones, coastlines are not circles, and bark is not smooth, nor does lightning travel in a straight line.”
+
+		</div>
+
+
+	</div>
+	<div class="informations">
+		<p>Trees are natural fractals, patterns that repeat smaller and smaller copies of themselves. Each tree branch, from the trunk to the tips, is a copy of the one that came before it. Branches split off from the highest tip the same way they do from the trunk, and set of branches splits off at the same angle to each other.</p>
+		<ul><u>Here is the basic plan for this tree fractal:</u>
+			<li>Start at some point and move a certain distance in a certain direction.</li>
+			<li>At that point, make a branch. Turn some angle to the right and then repeat the previous step with a shorter distance. (Recursion!)</li>
+			<li>Now go back and turn left to make the other branch. (Recursion again.)</li>
+		</ul>
+	</div>
+
+	<div id="container-forma-canvas">
+		<div class="container">
+			<div>
+				<h4 class="title">Main-Meniu</h4>
+				<form onsubmit="return false">
+				
+					<div class="omrs-input-group">
+						<label class="omrs-input-underlined omrs-input-danger" >
+							<input required id="input1">
+							<span class="omrs-input-label">Left branch angle</span>
+							<span class="omrs-input-helper">angle in radians, transformed in number</span>
+						  	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+						</label>
+					</div>
+
+					<div class="omrs-input-group">
+						<label class="omrs-input-underlined omrs-input-danger" >
+						  <input required id="input2">
+						  <span class="omrs-input-label">Left angle increment</span>
+						  <span class="omrs-input-helper">(0.01 - 0.1)</span>
+						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+						</label>
+					</div>
+						<div class="omrs-input-group" id="input3">  
+							<label class="omrs-input-underlined omrs-input-danger" >
+								<input required>
+								<span class="omrs-input-label">Right branch angle</span>
+								  <span class="omrs-input-helper">angle in radians, transformed in number</span>
+							  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+							  </label>
+						</div>
+						<div class="omrs-input-group">
+							<label class="omrs-input-underlined omrs-input-danger" id="input4">
+							  <input required>
+							  <span class="omrs-input-label">Right angle increment</span>
+								<span class="omrs-input-helper">(0.01 - 0.1)</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+							</label>
+						</div>
+						<div class="omrs-input-group" id="input5">
+							<label class="omrs-input-underlined omrs-input-danger" >
+								<input required>
+								<span class="omrs-input-label">Trunk ratio</span>
+								  <span class="omrs-input-helper">(0.1 - 0.9)</span>
+								  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+							</label>
+						</div>
+						<div class="omrs-input-group" id="input6">
+								<label class="omrs-input-underlined omrs-input-danger" >
+								  <input required>
+								  <span class="omrs-input-label">Number of levels</span>
+									<span class="omrs-input-helper">(0 - 11)</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+								</label>
+						</div>
+							<div class="omrs-input-group" id="input7">
+								<label class="omrs-input-underlined omrs-input-danger" >
+								  <input   required id="input7">
+								  <span class="omrs-input-label "> Thickness</span>
+									<span class="omrs-input-helper">(0 - 25)</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+								</label>
+
+									<div class="cont" id="grosime-check">
+										<input type="checkbox" id="_checkbox">
+										<label for="_checkbox" id="check-label">
+										<div id="tick_mark"></div>
+										</label>
+									</div>
+					
+							
+								<span class="omrs-input-label omrs-input-label-thick">Gradually</span>
+							</div>
+
+							<div class="omrs-input-group">
+								<label class="omrs-input-underlined omrs-input-danger"   >
+					
+									<span class="omrs-input-label" id="text-first-color">Lower color</span>
+									<div class="color-picker" id="colorpicker1"></div>
+									<input required id="first-useless-input" disabled="disabled">
+								  
+									
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+								</label>
+							</div>
+							<div class="omrs-input-group">
+								<label class="omrs-input-underlined omrs-input-danger"   >
+					
+									<span class="omrs-input-label" id="second-first-color">Upper color</span>
+									<div class="color-picker" id="colorpicker2"></div>
+									<input required id="second-useless-input" disabled="disabled">
+								  
+									
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"/></svg>
+								</label>
+							</div>
+
+				
+				</form>
+			</div>
+		</div>
+	
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="about">
+			<p>Note</p>
+			<p>
+				This project was done with the help and information of <a target="_blank" href="https://www.youtube.com/watch?v=8JmoI4q7fTg&ab_channel=CodingMath">Coding Math </a>, who inspired me to try it
+			</p>
+		</div>
+		<div class="my-name">
+			<p>My name:</p>
+			<p>Pustai Bogdan</p>
+			
+		</div>
+		<div class="contact">
+			<a href="#">Contact link </a>
+		</div>
+	</footer>
+
+
+
+
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+	<script   type="module" src="scriptColorPicker.js"></script>
+	<script type="module" src="script5.js"></script>
+	<script type="module" src="script4.js"></script>
+	<script type="module" src="defaultValues.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,24 @@
+#text-first-color{
+  position: relative;
+ margin-right: 100px;
+}
+#second-first-color{
+    position: relative;
+    margin-right: 100px;
+}
+.color-picker{
+    display: inline-block;
+}
+.pickr{
+    display:inline-block;
+    transform: translateY(10px);
+}
+#panel{
+    visibility: hidden;
+}
+#first-useless-input, #second-useless-input{
+padding: 0;
+}
+#first-useless-input, #second-useless-input:hover{
+background-color: transparent;
+    }

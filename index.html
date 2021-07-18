@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-
+	<title>Fractal Tree</title>
 
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="styleForm.css">
@@ -13,6 +12,7 @@
 	<link rel="stylesheet" href="style-footer.css">
 
 </head>
+
 <body>
 	<div class="first-container">
 		<div class="author">
@@ -143,7 +143,7 @@
 		<canvas id="canvas"></canvas>
 	</div>
 
-	<!-- Footer -->
+
 	<footer>
 		<div class="about">
 			<p>Note</p>
@@ -162,14 +162,385 @@
 	</footer>
 
 
+	<script  src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+	<script>
+		////Default val
+		class Complex{
+			constructor(val1,val2,val3,val4,val5,limitaBucConstruite,grosimea,bifat,culoare1,culoare2){
+				this.val1=val1;
+				this.val2=val2;
+				this.val3=val3;
+				this.val4=val4;
+				this.val5=val5;
+				this.grosimea=grosimea;
+				this.bifat=bifat;
+				this.culoare1=culoare1;
+				this.culoare2=culoare2;
+				this.limitaBucConstruite=limitaBucConstruite;
+			}
+		
+		
+		}
+		let clasa= new Complex(Math.PI , 0.01 ,Math.PI/2, 0.01,0.33,9,1,false,'#800000','#008000');//val default
+		
+		
+		
+		
+		
+		
+		
+		// import Complex, { clasa } from './defaultValues.js';
+		// import {mareSmekerie} from './script4.js';
+		// import {req} from './script4.js';
+		
+		
+		let trunkRatio;
+		let tA,tAS,tB,tBS, culoareJos, culoareSus,nrBucati;
+		let contor=0;
+		
+		
+		
+		
+		
+		let inp1=document.getElementById("input1").addEventListener("keyup", (e)=>{  
+			if(e.key==='Enter'){
+		 
+		   
+				tA=parseFloat(e.target.value) ;
+				clasa.val1=tA;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		
+		});
+		
+		
+		let inp2=document.getElementById("input2").addEventListener("keyup", (e)=>{  
+			if(e.key==='Enter'){
+		 
+		   
+				tAS=parseFloat(e.target.value) ;
+				clasa.val2=tAS;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		
+		});
+		let inp3=document.getElementById("input3").addEventListener("keyup", (e)=>{  
+			if(e.key==='Enter'){
+		 
+		   
+				tB=parseFloat(e.target.value) ;
+				clasa.val3=tB;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		
+		});
+		let inp4=document.getElementById("input4").addEventListener("keyup", (e)=>{  
+			if(e.key==='Enter'){
+		 
+		   
+				tBS=parseFloat(e.target.value) ;
+				clasa.val4=tBS;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+		
+			}
+		
+		});
+		let inp5=document.getElementById("input5").addEventListener("keyup",(e)=>{
+			console.log(e);
+			if(e.key==='Enter'){
+		  
+			
+				trunkRatio=parseFloat(e.target.value) ;
+				clasa.val5=trunkRatio;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		 })
+		 let inp7=document.getElementById("input6").addEventListener("keyup",(e)=>{
+		  
+			if(e.key==='Enter'){
+		  
+			console.log(e.target.value);
+					nrBucati=parseInt(e.target.value) ;
+				clasa.limitaBucConstruite=nrBucati;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		
+		 
+		})
+		let inp8=document.getElementById("input7").addEventListener("keyup",(e)=>{
+			// let check=document.getElementById('grosime-check');
+		// clasa.bifat=check.checked;
+		// console.log(clasa.bifat);
+			if(e.key==='Enter'){
+		
+				   let grosime=parseFloat(e.target.value) ;
+				clasa.grosimea=grosime;
+				cancelAnimationFrame(req);
+				mareSmekerie(clasa);
+			}
+		
+		 
+		})
+		let inp9=document.getElementById("grosime-check").addEventListener("change",(e)=>{
+		
+		clasa.bifat=!clasa.bifat;
+		cancelAnimationFrame(req);
+		mareSmekerie(clasa);
+		   
+		
+		 
+		})
+		 let inp6=document.getElementById("colorpicker1").addEventListener("click",(e)=>{
+			   let  culoare1=(e.target.value) ;
+			   console.log(culoare1);
+			  clasa.culoare1=culoare1;
+			
+		 })
+		 let inp66=document.getElementById("colorpicker2").addEventListener("input",(e)=>{
+			let  culoare2=(e.target.value) ;
+		   clasa.culoare2=culoare2;
+		 
+		})
+		
+		
+		
+		
+		
+		
+		
+		var color1=12,color2=13,color3=14;
+		const panel=document.getElementById('panel');
+		const pickr = Pickr.create({
+			el: '.color-picker',
+			theme: 'classic', // or 'monolith', or 'nano'
+		
+			swatches: [
+				'rgba(244, 67, 54, 1)',
+				'rgba(233, 30, 99, 0.95)',
+				'rgba(156, 39, 176, 0.9)',
+				'rgba(103, 58, 183, 0.85)',
+				'rgba(63, 81, 181, 0.8)',
+				'rgba(33, 150, 243, 0.75)',
+				'rgba(3, 169, 244, 0.7)',
+				'rgba(0, 188, 212, 0.7)',
+				'rgba(0, 150, 136, 0.75)',
+				'rgba(76, 175, 80, 0.8)',
+				'rgba(139, 195, 74, 0.85)',
+				'rgba(205, 220, 57, 0.9)',
+				'rgba(255, 235, 59, 0.95)',
+				'rgba(255, 193, 7, 1)'
+			],
+		
+			components: {
+		
+				// Main components
+				preview: true,
+				opacity: true,
+				hue: true,
+		
+				// Input / output Options
+				interaction: {
+					hex: true,
+					rgba: true,
+					hsla: true,
+					hsva: true,
+					cmyk: true,
+					input: true,
+					clear: true,
+					save: true
+				}
+			}
+		});
+		
+		pickr.on('change', (color, source, instance) => {
+		 color1=color.toHEXA()[0];
+		 color2=color.toHEXA()[1];
+		 color3=color.toHEXA()[2];
+		 clasa.culoare1='#'+(color1)+(color2)+(color3);
+		})
+		
+		const panel2=document.getElementById('panel2');
+		const pickr2 = Pickr.create({
+			el: '.color-picker',
+			theme: 'classic', // or 'monolith', or 'nano'
+		
+			swatches: [
+				'rgba(244, 67, 54, 1)',
+				'rgba(233, 30, 99, 0.95)',
+				'rgba(156, 39, 176, 0.9)',
+				'rgba(103, 58, 183, 0.85)',
+				'rgba(63, 81, 181, 0.8)',
+				'rgba(33, 150, 243, 0.75)',
+				'rgba(3, 169, 244, 0.7)',
+				'rgba(0, 188, 212, 0.7)',
+				'rgba(0, 150, 136, 0.75)',
+				'rgba(76, 175, 80, 0.8)',
+				'rgba(139, 195, 74, 0.85)',
+				'rgba(205, 220, 57, 0.9)',
+				'rgba(255, 235, 59, 0.95)',
+				'rgba(255, 193, 7, 1)'
+			],
+		
+			components: {
+		
+				// Main components
+				preview: true,
+				opacity: true,
+				hue: true,
+		
+				// Input / output Options
+				interaction: {
+					hex: true,
+					rgba: true,
+					hsla: true,
+					hsva: true,
+					cmyk: true,
+					input: true,
+					clear: true,
+					save: true
+				}
+			}
+		});
+		
+		pickr2.on('change', (color, source, instance) => {
+		 color1=color.toHEXA()[0];
+		 color2=color.toHEXA()[1];
+		 color3=color.toHEXA()[2];
+		 clasa.culoare2='#'+(color1)+(color2)+(color3);
+		})
+		
+		
+		
+		
+			// Script 4//////////////////////
+		// import Complex from './defaultValues.js';
+		// import {clasa} from './script5.js';
+		
+		
+		window.onload = mareSmekerie(clasa);
+		var req;
+		
+		function mareSmekerie(clasa) {
+		
+			var canvas = document.getElementById("canvas"),
+				context = canvas.getContext("2d"),
+				width = canvas.width = window.innerWidth,
+				height = canvas.height = window.innerHeight;
+			let defazaj = 0;
+		
+			var p0 = {
+					x: width / 2 + defazaj,
+					y: height - 50
+				},
+				p1 = {
+					x: width / 2  - defazaj,
+					y: 50
+				},
+				branchAngleA,
+				branchAngleB,
+			
+				tA = clasa.val1,
+				tAS = clasa.val2,
+				tB = clasa.val3,
+				tBS = clasa.val4;
+				var trunkRatio=clasa.val5;
+		
+		
+			draw();
+		
+			function draw() {
+		
+		
+				context.clearRect(0, 0, width, height);
+				branchAngleA = Math.cos(tA += tAS) *0.5;   //-0.5
+		
+				branchAngleB = Math.sin(tB += tBS) *0.5; ///0.5
+			
+				tree(p0, p1, clasa.limitaBucConstruite,clasa.grosimea,clasa);
+			
+				req=requestAnimationFrame(draw);
+			}
+		
+			function tree(p0, p1, limit,grosime,clasa) {
+				var dx = p1.x - p0.x,  //0
+					dy = p1.y - p0.y,  //-678
+					dist = Math.sqrt(dx * dx + dy * dy), ///678
+					angle = Math.atan2(dy, dx), //-pi/2  (-1.57)
+					branchLength = dist * (1 - trunkRatio), ///474
+					pA = {
+						x: p0.x + dx * trunkRatio,
+						y: p0.y + dy * trunkRatio
+					},
+					pB = {
+						x: pA.x + Math.cos(angle + branchAngleA) * branchLength,
+						y: pA.y + Math.sin(angle + branchAngleA) * branchLength,
+					},
+					pC = {
+						x: pA.x + Math.cos(angle + branchAngleB) * branchLength,
+						y: pA.y + Math.sin(angle + branchAngleB) * branchLength,
+					};
+		
+		if(clasa.bifat)
+		context.lineWidth=(limit*3+grosime)/2;
+		else context.lineWidth=grosime;
+		
+				context.beginPath();
+				context.moveTo(p0.x, p0.y);
+				context.lineTo(pA.x, pA.y);
+				context.strokeStyle=clasa.culoare2;
+		
+					if(limit>=6){
+						context.strokeStyle=clasa.culoare1;
+					}
+			
+		
+		
+				
+			
+				context.stroke();
+		
+				if(limit > 0) {
+			
+					tree(pA, pC, limit - 1,grosime,clasa);
+					tree(pA, pB, limit - 1,grosime,clasa);
+				}
+				else {
+					context.beginPath();
+					context.moveTo(pB.x, pB.y);
+					context.lineTo(pA.x, pA.y);
+					context.lineTo(pC.x, pC.y);
+					context.stroke();
+				}
+			}
+		};
+		
+		
+		
+		
+		
+		</script>
+	
 
-
-
+	<!-- <script src="./script4.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 	<script   type="module" src="scriptColorPicker.js"></script>
 	<script type="module" src="script5.js"></script>
-	<script type="module" src="script4.js"></script>
-	<script type="module" src="defaultValues.js"></script>
+
+	<script type="module" src="defaultValues.js"></script> -->
+
+	<!-- <script src="./script4.js"></script>
+	<script  src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+		<script    src="scriptColorPicker.js"></script>
+		<script  src="script5.js"></script>
+	
+		<script  src="defaultValues.js"></script> -->
+
 </body>
 </html>
 
